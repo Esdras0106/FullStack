@@ -4,10 +4,12 @@ import './styles.css';
 
 function Footer() {
   return (
-	<footer className="footer">
+	<footer className="footer-container">
 	  <p>
 		&copy; {new Date().getFullYear()} - Todos os direitos reservados.
-		<br /> Desenvolvido por Senai
+		<p>
+			Desenvolvido por Senai
+		</p>
 	  </p>
 	</footer>
   )

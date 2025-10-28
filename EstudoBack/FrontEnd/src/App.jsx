@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {Routes, route} from 'react-hook-form'
+
+import  './Components/Footer'
+import './Components/Header'
+
 
 function App() {
   
@@ -13,4 +14,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
