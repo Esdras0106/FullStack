@@ -1,3 +1,4 @@
+// ...existing code...
 const express = require('express');
 const cors = require('cors');
 const { Sequelize, DataTypes } = require('sequelize');
@@ -23,8 +24,7 @@ const Cliente = sequelize.define('Cliente', {
     },
     telefone: {
         type: DataTypes.STRING,
-        allowNull: false,
-
+        allowNull: false
     },
     formaDepagamento: {
         type: DataTypes.STRING,
@@ -36,7 +36,7 @@ const Cliente = sequelize.define('Cliente', {
     }
 });
 
-const Produto = sequelize.define('Usuario', {
+const Produto = sequelize.define('Produto', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -52,8 +52,7 @@ const Produto = sequelize.define('Usuario', {
     },
     validade: {
         type: DataTypes.STRING,
-        allowNull: false,
-
+        allowNull: false
     },
     categoria: {
         type: DataTypes.STRING,
@@ -65,66 +64,83 @@ const Produto = sequelize.define('Usuario', {
     }
 });
 
-
-
-
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const port = 3000;
 
-app.get('/', (req, res) => (
-    res.send('🚀API está funcionando🚀')
-))
-
-app.get( '/Cliente', async(req, res) =>{
-    const Cliente = await Cliente.findAll();
-    res.json(Clientes)
+app.get('/', (req, res) => {
+    res.send('🚀API está funcionando🚀');
 });
 
-app.get( '/Produto', async(req, res) =>{
-    const Cliente = await Produto.findAll();
-    res.json(Produtos)
+app.get('/Clientes', async (req, res) => {
+    const Clientes = await Cliente.findAll();
+    res.json(Clientes);
 });
 
-app.post('/Clientes', async(req,res)=>{
-    try{
-        const{id,
+app.post('/Clientes', async (req, res) => {
+    try {
+        const {
             nome,
             email,
             telefone,
             formaDepagamento,
             endereco
         } = req.body;
-        const novoCliente = await Cliente.create({nome,
+        const novoCliente = await Cliente.create({
+            nome,
             email,
             telefone,
             formaDepagamento,
             endereco
-        })
-    } catch(err){
-
-        if (err.name === 'SequelizeUniqueConstrainterror'){
-            return res.status(409).json({message: 'Cliente já cadastrado.'})
+        });
+        res.status(201).json(novoCliente);
+    } catch (err) {
+        if (err.name === 'SequelizeUniqueConstraintError') {
+            return res.status(409).json({ message: 'Cliente já cadastrado.' });
         }
-        
-        console.err('Erro ao criar cliente:', err);
-        return res.status(500).json({ message: 'E-mail interno do servidor.'})
+        console.error('Erro ao criar cliente:', err);
+        return res.status(500).json({ message: 'Erro interno do servidor.' });
     }
 });
 
-sequelize.sync().then(()=>{
-    app.listen(port, ()=>{
-        console.log(`🚀API rodando em http:localhost:${port}`)
-        console.log('🚀Conectado ao banco de dados MySQL.')
+app.get('/Produtos', async (req, res) => {
+    const Produtos = await Produto.findAll();
+    res.json(Produtos);
+});
+
+app.post('/Produtos', async (req, res) => {
+    try {
+        const {
+            nome,
+            lote,
+            validade,
+            categoria,
+            quantidade
+        } = req.body;
+        const novoProduto = await Produto.create({
+            nome,
+            lote,
+            validade,
+            categoria,
+            quantidade
+        });
+        res.status(201).json(novoProduto);
+    } catch (err) {
+        console.error('Erro ao criar produto:', err);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+});
+
+// Sincroniza modelos e inicia o servidor
+sequelize.sync()
+    .then(() => {
+        app.listen(port, () => {
+            console.log(`🚀API rodando em http://localhost:${port}`);
+            console.log('🚀Conectado ao banco de dados MySQL.');
+        });
+    })
+    .catch((error) => {
+        console.log('Não foi possível conectar ao banco de dados:', error);
     });
-}).catch(err => {
-    console.log('Não foi possível conectar ao banco de dados:', err)
-})
-
-
-
-
-
