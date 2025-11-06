@@ -1,14 +1,11 @@
 import React from 'react';
 
-const Footer = () => {
-    const currentYear = new Date().getFullYear();
-    const companyAddress = "Endereço da Empresa";
-
-    return (
-        <footer>
-            <p>&copy; {currentYear} {companyAddress}</p>
-        </footer>
-    );
-};
-
-export default Footer;
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <small>© {new Date().getFullYear()} Endereço da Empresa</small>
+      </div>
+    </footer>
+  );
+}

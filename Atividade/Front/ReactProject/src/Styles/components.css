@@ -1,0 +1,182 @@
+
+.header, header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, #0f1724 0%, #111827 100%);
+  color: #fff;
+  padding: 0.55rem 0;
+  box-shadow: var(--shadow);
+}
+
+/* container já existe, aqui apenas garantia de layout */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* marca maior e mais visível */
+.brand {
+  font-weight: 800;
+  font-size: 1.05rem; /* ajuste conforme preferir */
+  color: #f8fafc;
+  letter-spacing: 0.6px;
+}
+
+/* lista horizontal de navegação */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.nav-list li { margin: 0; }
+
+.nav-list a {
+  color: #9ec5ff;
+  text-decoration: none;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background .12s, color .12s;
+}
+
+/* hover */
+.nav-list a:hover {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+}
+
+/* destaque para o link ativo (NavLink define aria-current="page") */
+.nav-list a[aria-current="page"] {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-weight: 600;
+}
+
+
+footer, .footer {
+  background: #0b1320;
+  color: #d1d5db;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+}
+
+
+
+/* Header */
+.header, header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(90deg, rgba(11,22,32,0.96), rgba(3,37,49,0.96));
+  color: #fff;
+  padding: 0.6rem 0;
+  box-shadow: 0 2px 6px rgba(2,6,23,0.18);
+}
+
+/* layout container usado no header/pages */
+.container {
+  max-width: var(--container-w);
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Brand */
+.brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: #fff;
+  letter-spacing: 0.6px;
+}
+
+/* Nav */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.nav-list a {
+  color: #bfe8ef;
+  text-decoration: none;
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  display: inline-block;
+  transition: background .12s, color .12s, transform .06s;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-list a:hover {
+  background: rgba(255,255,255,0.04);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ativo */
+.nav-list a[aria-current="page"] {
+  background: linear-gradient(90deg, rgba(14,165,164,0.12), rgba(3,102,214,0.06));
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+  font-weight: 700;
+}
+
+/* Buttons */
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--text);
+}
+
+/* Ajuste inputs/botões genéricos se necessário */
+.btn {
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.035);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+/* ...existing code... */
+/* Footer */
+footer, .footer {
+  background: #071016;
+  color: #d1d5db;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
